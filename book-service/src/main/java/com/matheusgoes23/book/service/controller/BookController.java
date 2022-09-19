@@ -3,16 +3,20 @@ package com.matheusgoes23.book.service.controller;
 import com.matheusgoes23.book.service.model.Book;
 import com.matheusgoes23.book.service.proxy.CambioProxy;
 import com.matheusgoes23.book.service.repository.BookRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "Book endpoint")
 @RestController
 @RequestMapping("book-service")
 public record BookController(Environment environment, BookRepository repository, CambioProxy proxy) {
 
+    @Operation(summary = "Find a specific book by your ID")
     @GetMapping("{id}/{currency}")
     public Book findBook(@PathVariable("id") Long id, @PathVariable("currency") String currency) {
 

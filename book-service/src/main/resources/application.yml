@@ -27,3 +27,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/book_service
     user: postgres
     password: postgres
+
+springdoc:
+  show-actuator: true
+  api-docs:
+    path: book-service/v3/api-docs
